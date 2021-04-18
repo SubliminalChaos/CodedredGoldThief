@@ -6,7 +6,8 @@
  */
 
 import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
-import com.github.jengelman.gradle.plugins.shadow.tasks.ShadowJar
+
+
 
 plugins {
   kotlin("jvm") version "1.4.31"
@@ -22,12 +23,15 @@ repositories {
   maven {
     url = uri("https://oss.sonatype.org/content/repositories/snapshots/")
   }
+  mavenLocal()
 }
 
 dependencies {
   implementation(kotlin("stdlib"))
 
   implementation("org.spigotmc:spigot-api:1.16.5-R0.1-SNAPSHOT")
+
+  compileOnly(dependencyNotation = "org.spigotmc:spigot:1.16.3-R0.1-SNAPSHOT")
 }
 
 tasks.withType<KotlinCompile> {
